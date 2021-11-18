@@ -68,6 +68,10 @@
                 })
             });
 
+            update();
+        }
+
+        function update(){
             // Sample URL: 
             // http://localhost:3000/azure-static-web-app/client/index.html?rid=100113&gid=1
             const params = new URLSearchParams(location.search);
@@ -78,6 +82,8 @@
                 //console.log(data);
                 plotWKT(data);                
             });
+
+            setTimeout(update, 1000);
         }
 
         function plotWKT(data) {
