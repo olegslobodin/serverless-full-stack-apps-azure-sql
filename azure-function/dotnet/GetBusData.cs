@@ -9,11 +9,11 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 
 namespace GetBusData
-{
+{    
     public static class GetBusData
     {
         [FunctionName("GetBusData")]
-        public async static Task Run([TimerTrigger("*/1 * * * * *")] TimerInfo myTimer, ILogger log)
+        public async static Task Run([TimerTrigger("*/15 * * * * *")]TimerInfo myTimer, ILogger log)
         {
             var m = new BusDataManager(log);
             await m.ProcessBusData();
