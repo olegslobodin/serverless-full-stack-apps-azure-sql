@@ -83,7 +83,10 @@
                 plotWKT(data);                
             });
 
-            setTimeout(update, 1000);
+            const updateTimeout = parseInt(params.get('updateTimeout'));
+            if(Number.isInteger(updateTimeout)){
+                setTimeout(update, updateTimeout);
+            }
         }
 
         function plotWKT(data) {
@@ -111,6 +114,7 @@
                 features.push(f2);
             }
 
+            map.removeLayer(vector);    //remove previous points
             vector = new ol.layer.Vector({
                 source: new ol.source.Vector({ features: features }),
                 style: styles
